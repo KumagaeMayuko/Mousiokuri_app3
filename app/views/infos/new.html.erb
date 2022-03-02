@@ -1,0 +1,24 @@
+<div class='form-wrapper'>
+  <h2>新規投稿作成</h2>
+    <%= form_with url:info_create_path, model: @info do |f| %>
+      <% if @info.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@info.errors.count, "入力エラーです！") %> </h2>
+
+          <ul>
+            <% @info.errors.each do |error| %>
+              <p><%= error.full_message %></p>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <p><%= f.label :category_id, "カテゴリー" %></p>
+      <p><%= f.collection_select :category_id, Category.all, :id, :name %></P>
+      <p><%= f.label :title, "タイトル" %></p>
+      <P><%= f.text_field :title %></P>
+      <p><%= f.label :content, "内容" %></P>
+      <P><%= f.text_area :content %></P>
+      
+      <%= f.submit '送信'%>
+    <% end %>
+  </div>

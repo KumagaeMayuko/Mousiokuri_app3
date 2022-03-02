@@ -1,0 +1,73 @@
+<div class="today">
+  <h1><%= Date.current.strftime('%Y年%m月%d日') %><h1>
+  <h2>本日のイベント</h2>
+  <% if @todays_events.blank? %>
+    <p>無し</p>
+  <% else %>
+    <% @todays_events.each do |event| %>
+      <p><%= event.title %></p>
+      <p><%= event.start.strftime('%H: %M') %> 〜 <%= event.end.strftime('%H: %M') %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<!--すべてのページ-->
+<div class="note2">
+<div class="sen2">
+    ＜申し送りノート＞<br><br>
+    <% @tabs.each do |tab| %>
+      <div class="block">
+        <span style='color:#eb8552;'> 
+          <%= tab.category.name %>
+        </span>
+        <br><br>
+        <% tab.category.infos.each do |info| %>
+        <span style='color:#93c31f;'>
+          ☆<%= info.title %><br>
+        </span>
+          <%= info.content %>
+          <br><br>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class='content'>
+  <div id='calendar'></div>
+
+  <!--カレンダーモーダル用のhtml-->
+  <div id="modal" class='hidden' tabindex="-1" role="dialog">
+      <div class="modal-bg"></div>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close">
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+  <div id="response-modal" class='hidden' tabindex="0" role="dialog">
+      <div class="modal-bg"></div>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close">
+              &times;
+            </button>
+          </div>
+          <div class="response-modal-body">
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'calendar/event', 'data-turbolinks-track': 'reload' %>

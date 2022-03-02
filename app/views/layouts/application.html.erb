@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<html>
+  <head>
+    <title>MousiokuriApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= csrf_meta_tags %> 
+    <%= csp_meta_tag %>
+    <meta charset="UTF-8">
+    <%= favicon_link_tag('medicalFavicon.png') %>
+
+    <div class="bg_pattern Polka_v2"></div>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'ui/hamburger' %>
+  </head>
+
+  <body>
+    <header>
+    <div class="container">
+      <div class="logo">
+        <a href="/">
+          <%= image_tag 'sitetitle_icon.png',alt:"申し送りノート", height:"50" %>
+        </a>
+      </div>
+      <div class="pc-menu">
+        <nav>
+          <ul>
+            <li><a href="/note">申し送りノート</a></li>
+            <li><a href="#">アカウント作成、削除</a></li>
+            <li><a href='#'>ログイン、ログアウト</a></li> 
+
+          </ul>
+        </nav>
+      </div>
+      <div class="sp-menu">
+        <span class="material-icons" id="open">menu</span>
+      </div>
+    </div>
+  </header>
+  <div class="overlay">
+    <span class="material-icons" id="close">close</span>
+    <nav>
+      <ul>
+        <li><a href="/note">申し送りノート</a></li>
+        <li><a href="#">アカウント作成、削除</a></li>
+        <li><a href='#'>ログイン、ログアウト</a></li> 
+
+      </ul>
+    </nav>
+  </div>
+<%
+=begin%>
+ 
+    <% if logged_in? %>
+    <%= render 'sessions/logged_in' %>
+    <% else %>
+      <%= render 'sessions/not_logged_in' %>
+    <% end %> 
+<%
+=end%>  
+    <%= yield %>
+ 
+  </body>
+</html>

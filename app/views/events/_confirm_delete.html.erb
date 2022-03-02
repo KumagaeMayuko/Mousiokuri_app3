@@ -1,0 +1,13 @@
+<div class='confirm-delete-dialog'>
+  <p>以下のイベントを削除しますか？</p>
+  <ul>
+    <li>タイトル:<%= event.title %></li>
+    <li>開始:<%= event.start.strftime('%Y年%m月%d日 %H時%M分') %></li>
+    <li>終了:<%= event.end.strftime('%Y年%m月%d日 %H時%M分') %></li>
+  </ul>
+  <div class='wrapper-btn-delete-event'>
+    <span class='btn-delete-event'>
+      <%= button_to "削除", event_delete_path(event.id), method: :delete, remote: true %>
+    </span>
+  </div>
+</div>

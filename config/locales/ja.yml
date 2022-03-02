@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    attributes:
+      event:
+        title: タイトル
+        start: 開始
+        end: 終了
+      info:
+        title: タイトル
+        content: 内容
+    models:
+      event: イベント
+      info: お知らせ

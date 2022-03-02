@@ -1,0 +1,50 @@
+<% flash.each do |message_type, message| %>
+  <div class='alertmessage'>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  </div>
+<% end %>
+
+
+<div id='note'>
+  <div class="container_menu">
+    <ul class="menu">
+      <!--tab-->
+      <li><a href="#" class="active"><%= @tabs[0].category.name %></a></li>
+      <% @tabs[1..].each do |tab| %>
+        <li><a href="#">
+          <%= tab.category.name %>
+        </a></li>
+      <% end %>
+    </ul>
+
+    <!--info-->
+    <section class="message active">
+        <div class="block">
+          <% @tabs[0].category.infos.each do |info| %>
+            <p><%= info.title %></p>
+            <p><%= safe_join(info.content.split("\n"),tag(:br)) %></p> 
+            <p><%= button_to "削除", info_delete_path(info.id), method: :delete, class:'delete-btn' %></p>
+            <button><%= link_to "編集", info_edit_path(info.id) %></button>
+          <% end %>
+        </div>
+    </section>
+
+    <% @tabs[1..].each do |tab| %>
+      <section class="message">
+        <div class="block">
+          <% tab.category.infos.each do |info| %>
+            <p><%= info.title %></p>
+            <p><%= info.content %></p>
+            <p><%= button_to "削除", info_delete_path(info.id) %></p>
+            <button><%= link_to "編集", info_edit_path(info.id) %></button>
+          <% end %>
+        </div>
+      </section>
+    <% end %>
+    
+   </div>
+  <button class='new'><%= link_to "新規作成", info_new_path %></button>
+  <%= stylesheet_link_tag 'tabs' %>
+  <%= javascript_pack_tag 'tab/note' %>
+
+</div>

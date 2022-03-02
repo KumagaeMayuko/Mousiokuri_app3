@@ -1,0 +1,22 @@
+<!--新規登録用-->
+
+<div class="row">
+      <%= form_with(model: @event, url: event_create_path, local: false, remote: true) do |f| %>
+        <%#= render 'error_messages', object: f.object %>
+
+        <%= f.label :title %>
+        <%= f.text_field :title, class:'form-control mb-3', required: true %> 
+
+        <div class="form-inline text-left">
+         <%= f.label :start, {class:'control-label'}%>
+         <%= f.datetime_select :start, {default: Date.today + 0.hours + 00.minutes, minute_step: 5}, class: 'form-control' %>
+        </div>
+         <br>
+        <div class="form-inline text-left"> 
+         <%= f.label :end, {class:'control-label'}%>
+         <%= f.datetime_select :end, {default: Date.today + 0.hours + 00.minutes, minute_step: 5}, class: 'form-control' %>
+        </div>
+
+        <%= f.submit "登録",   class: "btn btn-primary js-event-create-btn" %>
+      <% end %>
+</div>      
