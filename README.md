@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+このアプリは、私が申し送りノートをWEBアプリにしたものです。
+申し送りノートとは、医療や介護業界において、スタッフ間での様々な情報交換で使用されるものです。
+しかし、現代においても今だにノートに記述しているところが多くあります。
+そのため、看護師の経験を活かし、業務改善を目的に作成しました。
 
-Things you may want to cover:
+今後導入予定の内容
+・スタッフと管理者のユーザー認証
+・メール機能
+・スタッフが申し送りノートを既読したのか確認できるページ
+・アンケート画面（例：勉強会参加者、不参加者のアンケート）
+・医者の勤務情報
+・キーワード検索機能
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
